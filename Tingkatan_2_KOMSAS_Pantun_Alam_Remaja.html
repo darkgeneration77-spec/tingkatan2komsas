@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tingkatan 2 KOMSAS - Pantun Alam Remaja</title>
+<style>
+  :root{
+    --bg:#f6f8fb;
+    --card:#ffffff;
+    --text:#172033;
+    --muted:#5f6b7a;
+    --primary:#2f5bea;
+    --primary-soft:#eaf0ff;
+    --accent:#8b5cf6;
+    --success:#147d64;
+    --warning:#a25d00;
+    --danger:#b42318;
+    --border:#dde3ec;
+    --shadow:0 14px 34px rgba(31,42,68,.09);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    background:
+      radial-gradient(circle at top left, #edf3ff 0, transparent 30%),
+      linear-gradient(180deg,#fbfcff 0%,var(--bg) 100%);
+    color:var(--text);
+    line-height:1.7;
+  }
+
+  .hero{
+    padding:56px 20px 38px;
+    background:linear-gradient(135deg,#173a8f 0%,#315ed8 52%,#7048d9 100%);
+    color:white;
+    position:relative;
+    overflow:hidden;
+  }
+
+  .hero:after{
+    content:"";
+    position:absolute;
+    width:320px;height:320px;
+    border-radius:50%;
+    right:-90px;top:-130px;
+    background:rgba(255,255,255,.09);
+  }
+
+  .wrap{max-width:1100px;margin:auto}
+  .eyebrow{
+    display:inline-block;
+    padding:7px 12px;
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:999px;
+    font-size:.84rem;
+    font-weight:700;
+    letter-spacing:.03em;
+    background:rgba(255,255,255,.08);
+  }
+  h1{
+    margin:16px 0 8px;
+    font-size:clamp(2rem,5vw,3.4rem);
+    line-height:1.08;
+  }
+  .subtitle{
+    max-width:760px;
+    font-size:1.05rem;
+    color:rgba(255,255,255,.9);
+  }
+
+  .topnav{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:rgba(255,255,255,.94);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  .navinner{
+    max-width:1100px;
+    margin:auto;
+    padding:10px 16px;
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+  }
+  .navinner a{
+    white-space:nowrap;
+    color:#2b3850;
+    text-decoration:none;
+    padding:8px 12px;
+    border-radius:10px;
+    font-size:.9rem;
+    font-weight:700;
+  }
+  .navinner a:hover{background:var(--primary-soft);color:var(--primary)}
+
+  main{padding:28px 18px 60px}
+  section{margin:26px 0}
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:24px;
+    box-shadow:var(--shadow);
+  }
+  .section-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:0 0 18px;
+    font-size:1.45rem;
+  }
+  .num{
+    width:36px;height:36px;
+    border-radius:10px;
+    display:grid;
+    place-items:center;
+    font-weight:800;
+    background:var(--primary-soft);
+    color:var(--primary);
+    flex:0 0 auto;
+  }
+
+  .rangkap-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:14px;
+  }
+  .rangkap{
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:18px;
+    background:#fbfcff;
+  }
+  .rangkap h3{
+    margin:0 0 8px;
+    color:var(--primary);
+    font-size:1rem;
+  }
+  .bm{font-weight:700;margin-bottom:6px}
+  .zh{color:var(--muted)}
+  .keyword{
+    display:inline-block;
+    padding:2px 7px;
+    border-radius:7px;
+    background:#fff4dd;
+    color:#8a4f00;
+    font-weight:800;
+  }
+
+  .highlight{
+    border-left:5px solid var(--primary);
+    background:var(--primary-soft);
+    padding:16px 18px;
+    border-radius:12px;
+  }
+  .exam{
+    border-left:5px solid var(--success);
+    background:#edf9f5;
+    padding:16px 18px;
+    border-radius:12px;
+  }
+  .warning{
+    border-left:5px solid #f59e0b;
+    background:#fff8e8;
+    padding:16px 18px;
+    border-radius:12px;
+  }
+
+  .two-col{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;
+  }
+
+  .item{
+    padding:14px 16px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:#fff;
+    margin:10px 0;
+  }
+  .item strong{color:#263a69}
+
+  .compare{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .compare > div{
+    padding:18px;
+    border-radius:16px;
+    border:1px solid var(--border);
+  }
+  .nilai{background:#f5f9ff}
+  .pengajaran{background:#f7fff9}
+
+  .tag{
+    display:inline-block;
+    padding:4px 9px;
+    border-radius:999px;
+    background:#eef2f7;
+    color:#3d4b61;
+    font-size:.8rem;
+    font-weight:800;
+    margin:3px 4px 3px 0;
+  }
+
+  .checklist{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px 14px;
+  }
+  .check{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    padding:12px 14px;
+    background:#f9fbfd;
+    border:1px solid var(--border);
+    border-radius:12px;
+  }
+  .check b{
+    display:grid;
+    place-items:center;
+    width:24px;height:24px;
+    border-radius:7px;
+    background:#e9f7f1;
+    color:var(--success);
+    flex:0 0 auto;
+  }
+
+  .footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:.9rem;
+    padding-top:20px;
+  }
+
+  .print-btn{
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    border:0;
+    background:#172033;
+    color:white;
+    border-radius:14px;
+    padding:12px 16px;
+    font-weight:800;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(0,0,0,.18);
+  }
+
+  @media(max-width:760px){
+    .rangkap-grid,.two-col,.compare,.checklist{grid-template-columns:1fr}
+    .hero{padding-top:42px}
+    .card{padding:18px}
+  }
+
+  @media print{
+    .topnav,.print-btn{display:none}
+    body{background:white}
+    .hero{background:white;color:black;padding:20px 0;border-bottom:2px solid #222}
+    .subtitle{color:#333}
+    main{padding:0}
+    .card{box-shadow:none;break-inside:avoid}
+  }
+</style>
+</head>
+
+<body>
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Tingkatan 2 Bahasa Melayu · KOMSAS</span>
+    <h1>Pantun Alam Remaja</h1>
+    <p class="subtitle">
+      Nota pembelajaran berfokus peperiksaan: maksud rangkap, tema, persoalan,
+      nilai, pengajaran, bentuk dan gaya bahasa.
+      配合华语解释，帮助学生真正理解，而不是只会背答案。
+    </p>
+  </div>
+</header>
+
+<nav class="topnav">
+  <div class="navinner">
+    <a href="#maksud">Maksud</a>
+    <a href="#tema">Tema</a>
+    <a href="#persoalan">Persoalan</a>
+    <a href="#nilai">Nilai</a>
+    <a href="#pengajaran">Pengajaran</a>
+    <a href="#bentuk">Bentuk</a>
+    <a href="#gaya">Gaya Bahasa</a>
+    <a href="#exam">Fokus Peperiksaan</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="maksud" class="card">
+  <h2 class="section-title"><span class="num">1</span>Maksud Setiap Rangkap 每节意思</h2>
+
+  <div class="rangkap-grid">
+    <div class="rangkap">
+      <h3>Rangkap 1</h3>
+      <div class="bm">Anak-anak berasa sangat gembira apabila ibu pulang ke rumah.</div>
+      <div class="zh">孩子看到母亲回家时，感到非常高兴。</div>
+    </div>
+
+    <div class="rangkap">
+      <h3>Rangkap 2</h3>
+      <div class="bm">
+        Perasaan takut dan <span class="keyword">cemas</span> ketika ibu tiada akan hilang apabila ibu kembali.
+      </div>
+      <div class="zh">
+        母亲不在家时，孩子会感到害怕和担心；母亲回来后，这种感觉就消失了。
+        <br><span class="keyword">cemas = risau / bimbang（担心、焦虑）</span>
+      </div>
+    </div>
+
+    <div class="rangkap">
+      <h3>Rangkap 3</h3>
+      <div class="bm">Anak-anak berharap ibu dapat pulang dengan segera.</div>
+      <div class="zh">孩子盼望母亲能够快点回来。</div>
+    </div>
+
+    <div class="rangkap">
+      <h3>Rangkap 4</h3>
+      <div class="bm">Adik-beradik bergembira dan menyanyi bersama-sama.</div>
+      <div class="zh">兄弟姐妹一起唱歌、玩乐，表现家庭中的欢乐。</div>
+    </div>
+
+    <div class="rangkap">
+      <h3>Rangkap 5</h3>
+      <div class="bm">Kepulangan ibu dan bapa membawa kegembiraan kepada anak-anak.</div>
+      <div class="zh">父母回家会给孩子带来快乐。</div>
+    </div>
+
+    <div class="rangkap">
+      <h3>Rangkap 6</h3>
+      <div class="bm">Anak-anak berasa gembira apabila menerima pemberian daripada ibu bapa.</div>
+      <div class="zh">孩子收到父母带回来的东西时感到开心。</div>
+    </div>
+
+    <div class="rangkap">
+      <h3>Rangkap 7</h3>
+      <div class="bm">Ibu bapa perlu memahami sifat dan kerenah anak-anak serta tidak terlalu cepat memarahi mereka.</div>
+      <div class="zh">父母应该理解孩子活泼好动的天性，不要动不动就责骂他们。</div>
+    </div>
+  </div>
+</section>
+
+<section id="tema" class="card">
+  <h2 class="section-title"><span class="num">2</span>Tema 主题</h2>
+  <div class="highlight">
+    <strong>Kasih sayang antara anak-anak dengan ibu bapa dalam sebuah keluarga.</strong>
+    <br>
+    孩子与父母之间的亲情，以及父母回家给孩子带来的欢乐。
+  </div>
+
+  <div class="warning" style="margin-top:16px">
+    <strong>Jangan tulis terlalu umum:</strong> “Tema ialah kasih sayang.”
+    <br>
+    考试最好说明是谁与谁之间的 kasih sayang，答案才完整。
+  </div>
+</section>
+
+<section id="persoalan" class="card">
+  <h2 class="section-title"><span class="num">3</span>Persoalan 课题</h2>
+
+  <div class="item">
+    <strong>Kasih sayang anak-anak terhadap ibu bapa</strong><br>
+    孩子对父母的关爱。
+  </div>
+  <div class="item">
+    <strong>Kegembiraan anak-anak apabila ibu bapa pulang</strong><br>
+    父母回家时，孩子感到非常开心。
+  </div>
+  <div class="item">
+    <strong>Kerinduan anak-anak terhadap ibu bapa</strong><br>
+    孩子思念父母。
+  </div>
+  <div class="item">
+    <strong>Keharmonian dalam sesebuah keluarga</strong><br>
+    家庭成员之间保持和睦关系。
+  </div>
+  <div class="item">
+    <strong>Sikap ibu bapa yang memahami kerenah anak-anak</strong><br>
+    父母应该理解孩子的行为和天性。
+  </div>
+</section>
+
+<section id="nilai" class="card">
+  <h2 class="section-title"><span class="num">4</span>Nilai 价值观</h2>
+
+  <div class="two-col">
+    <div class="item">
+      <strong>Kasih sayang 关爱</strong><br>
+      Anak-anak menyayangi ibu dan bapa mereka.
+    </div>
+    <div class="item">
+      <strong>Kegembiraan 欢乐</strong><br>
+      Anak-anak bergembira apabila ibu bapa pulang.
+    </div>
+    <div class="item">
+      <strong>Baik hati 善良</strong><br>
+      Ibu bapa memberikan sesuatu kepada anak-anak.
+    </div>
+    <div class="item">
+      <strong>Bertimbang rasa 体谅</strong><br>
+      Ibu bapa memahami kerenah anak-anak.
+    </div>
+  </div>
+</section>
+
+<section id="pengajaran" class="card">
+  <h2 class="section-title"><span class="num">5</span>Nilai ≠ Pengajaran</h2>
+
+  <div class="compare">
+    <div class="nilai">
+      <h3>Nilai</h3>
+      <p><strong>Kasih sayang</strong></p>
+      <p>只是价值观名称。</p>
+    </div>
+    <div class="pengajaran">
+      <h3>Pengajaran</h3>
+      <p><strong>Kita hendaklah menyayangi ahli keluarga.</strong></p>
+      <p>必须写出“我们应该怎样做”。</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top:22px">Pengajaran yang boleh digunakan:</h3>
+
+  <div class="item">
+    <strong>Kita hendaklah menyayangi ibu bapa dan ahli keluarga.</strong><br>
+    我们应该关爱父母和家人。
+  </div>
+  <div class="item">
+    <strong>Kita hendaklah menghargai ibu bapa.</strong><br>
+    我们应该珍惜父母。
+  </div>
+  <div class="item">
+    <strong>Ibu bapa hendaklah memahami kerenah anak-anak.</strong><br>
+    父母应该理解孩子的行为。
+  </div>
+  <div class="item">
+    <strong>Kita hendaklah mewujudkan hubungan keluarga yang harmoni.</strong><br>
+    我们应该营造和谐的家庭关系。
+  </div>
+</section>
+
+<section id="bentuk" class="card">
+  <h2 class="section-title"><span class="num">6</span>Bentuk 形式</h2>
+
+  <div class="item">
+    <strong>Rangkap</strong><br>
+    Pantun dibahagikan kepada beberapa rangkap.（诗歌由数个诗节组成）
+  </div>
+  <div class="item">
+    <strong>Baris</strong><br>
+    Setiap rangkap terdiri daripada baris-baris tertentu.（每一节由若干行组成）
+  </div>
+  <div class="item">
+    <strong>Pembayang</strong><br>
+    Bahagian awal pantun yang menjadi pembayang kepada maksud.（前半部分起兴）
+  </div>
+  <div class="item">
+    <strong>Maksud</strong><br>
+    Bahagian yang membawa isi sebenar pantun.（真正表达主要意思的部分）
+  </div>
+  <div class="item">
+    <strong>Rima akhir</strong><br>
+    Bunyi pada akhir setiap baris. 学生要学会看每一行最后的音，而不是机械地背一个格式。
+  </div>
+</section>
+
+<section id="gaya" class="card">
+  <h2 class="section-title"><span class="num">7</span>Gaya Bahasa 修辞</h2>
+
+  <div class="two-col">
+    <div class="item">
+      <strong>Repetisi</strong><br>
+      Pengulangan perkataan atau frasa.<br>
+      重复某些字词或短语。
+    </div>
+    <div class="item">
+      <strong>Inversi</strong><br>
+      Susunan kata diterbalikkan daripada susunan biasa.<br>
+      句子的正常语序被倒置。
+    </div>
+    <div class="item">
+      <strong>Asonansi</strong><br>
+      Pengulangan bunyi vokal.<br>
+      重复相同的元音。
+    </div>
+    <div class="item">
+      <strong>Aliterasi</strong><br>
+      Pengulangan bunyi konsonan.<br>
+      重复相同的辅音。
+    </div>
+  </div>
+
+  <div class="exam" style="margin-top:16px">
+    <strong>Teknik menjawab:</strong><br>
+    如果题目要求 “Nyatakan dua gaya bahasa”，最好写
+    <strong>nama gaya bahasa + bukti daripada teks</strong>，
+    不要只丢两个修辞名称然后祈祷阅卷老师心情好。
+  </div>
+</section>
+
+<section id="exam" class="card">
+  <h2 class="section-title"><span class="num">8</span>Fokus Peperiksaan 考试必须会</h2>
+
+  <div class="checklist">
+    <div class="check"><b>✓</b><div><strong>Maksud rangkap</strong><br>解释指定 rangkap 的意思</div></div>
+    <div class="check"><b>✓</b><div><strong>Tema</strong><br>写出完整主题</div></div>
+    <div class="check"><b>✓</b><div><strong>Persoalan</strong><br>写出课题并配合内容</div></div>
+    <div class="check"><b>✓</b><div><strong>Nilai</strong><br>辨认价值观</div></div>
+    <div class="check"><b>✓</b><div><strong>Pengajaran</strong><br>使用 “Kita hendaklah...”</div></div>
+    <div class="check"><b>✓</b><div><strong>Bentuk</strong><br>rangkap、baris、rima 等</div></div>
+    <div class="check"><b>✓</b><div><strong>Gaya bahasa</strong><br>名称 + 文本证据</div></div>
+    <div class="check"><b>✓</b><div><strong>KBAT</strong><br>给理由、例子或现实应用</div></div>
+  </div>
+
+  <div class="highlight" style="margin-top:18px">
+    <strong>Ringkasan hafalan:</strong><br>
+    Tema → 家庭亲情<br>
+    Persoalan → 思念、欢乐、和谐、理解孩子<br>
+    Nilai → kasih sayang / baik hati / bertimbang rasa<br>
+    Pengajaran → Kita hendaklah menyayangi dan menghargai keluarga.
+  </div>
+</section>
+
+<div class="footer">
+  Tingkatan 2 Bahasa Melayu · KOMSAS · Pantun Alam Remaja
+</div>
+
+</main>
+
+<button class="print-btn" onclick="window.print()">Cetak / 打印</button>
+
+</body>
+</html>

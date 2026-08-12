@@ -32,6 +32,12 @@ export default {
     if (!html.includes('tracking.js')) html = html.replace('</body>','<script src="/tracking.js"></script></body>');
 
     const isHome = url.pathname === '/' || url.pathname.endsWith('/index.html');
+
+    if (!isHome && !html.includes('id="global-home-button"')) {
+      const homeButton = `<a id="global-home-button" href="/" aria-label="Kembali ke halaman utama" style="position:fixed;left:18px;bottom:18px;z-index:10000;text-decoration:none;background:linear-gradient(180deg,#6d9cff,#2f6df6);color:#fff;font:900 14px/1.2 Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;padding:12px 16px;border-radius:15px;border:1px solid rgba(255,255,255,.45);box-shadow:0 6px 0 #214fae,0 12px 24px rgba(31,73,160,.28);display:flex;align-items:center;gap:8px;transition:transform .15s ease,box-shadow .15s ease">← Utama / 主页</a><style>#global-home-button:hover{transform:translateY(2px);box-shadow:0 4px 0 #214fae,0 8px 18px rgba(31,73,160,.22)}@media(max-width:640px){#global-home-button{left:12px;bottom:12px;padding:11px 13px;font-size:13px}}</style>`;
+      html = html.replace('</body>', homeButton + '</body>');
+    }
+
     if (isHome && !html.includes('student-dashboard.html')) {
       const portal = `<div style="position:fixed;right:18px;bottom:18px;z-index:9999;display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end">
         <a href="student-dashboard.html" style="text-decoration:none;background:linear-gradient(180deg,#6d9cff,#2f6df6);color:white;font-weight:900;padding:12px 15px;border-radius:14px;box-shadow:0 5px 0 #214fae">Student Dashboard 学生</a>

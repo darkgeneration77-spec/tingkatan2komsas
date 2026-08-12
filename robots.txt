@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# Public static hosting cannot guarantee crawler blocking.
+# This file requests compliant crawlers not to index or crawl the site.

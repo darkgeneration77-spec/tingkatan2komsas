@@ -1,21 +1,50 @@
+let schemaPromise;
+async function ensureSchema(db){
+  if(schemaPromise) return schemaPromise;
+  schemaPromise=(async()=>{
+    const {results=[]}=await db.prepare('PRAGMA table_info(events)').all();
+    if(!results.some(c=>c.name==='student_id')){
+      try{await db.exec("ALTER TABLE events ADD COLUMN student_id TEXT DEFAULT ''")}catch{}
+    }
+    try{await db.exec('CREATE INDEX IF NOT EXISTS idx_events_student_id ON events(student_id)')}catch{}
+  })();
+  return schemaPromise;
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    if (url.pathname.startsWith('/api/')) await ensureSchema(env.DB);
+
+    if (url.pathname === '/api/claim' && request.method === 'POST') {
+      const e = await request.json();
+      const sid=(e.studentId||'').trim().toUpperCase();
+      const name=(e.student||'').trim();
+      if(!sid||!name) return Response.json({ok:false,error:'missing fields'},{status:400});
+      await env.DB.prepare("UPDATE events SET student_id=? WHERE (student_id IS NULL OR student_id='') AND student=?")
+        .bind(sid,name).run();
+      return Response.json({ok:true});
+    }
+
     if (url.pathname === '/api/track' && request.method === 'POST') {
       const e = await request.json();
       if (!e?.student || !e?.type) return Response.json({ok:false,error:'missing fields'},{status:400});
+      const sid=(e.studentId||'').trim().toUpperCase();
       await env.DB.prepare(`INSERT INTO events
-        (student,kelas,type,work,file,correct_count,total_count,percent,wrong_json,skills_json,ts)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?)`)
-        .bind(e.student,e.kelas||'',e.type,e.work||'',e.file||'',e.correct??null,e.total??null,e.percent??null,JSON.stringify(e.wrong||[]),JSON.stringify(e.skills||{}),e.ts||new Date().toISOString())
+        (student_id,student,kelas,type,work,file,correct_count,total_count,percent,wrong_json,skills_json,ts)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?)`)
+        .bind(sid,e.student,e.kelas||'',e.type,e.work||'',e.file||'',e.correct??null,e.total??null,e.percent??null,JSON.stringify(e.wrong||[]),JSON.stringify(e.skills||{}),e.ts||new Date().toISOString())
         .run();
       return Response.json({ok:true});
     }
 
     if (url.pathname === '/api/student' && request.method === 'GET') {
+      const sid=(url.searchParams.get('id')||'').trim().toUpperCase();
       const name = url.searchParams.get('name') || '';
-      const {results=[]} = await env.DB.prepare('SELECT * FROM events WHERE student=? ORDER BY id ASC').bind(name).all();
+      let results=[];
+      if(sid){({results=[]}=await env.DB.prepare('SELECT * FROM events WHERE student_id=? ORDER BY id ASC').bind(sid).all())}
+      else if(name){({results=[]}=await env.DB.prepare('SELECT * FROM events WHERE student=? ORDER BY id ASC').bind(name).all())}
       return Response.json({events:results.map(normalize)});
     }
 
@@ -55,7 +84,7 @@ export default {
 
 function normalize(r){
   return {
-    id:r.id,student:r.student,kelas:r.kelas,type:r.type,work:r.work,file:r.file,
+    id:r.id,studentId:r.student_id||'',student:r.student,kelas:r.kelas,type:r.type,work:r.work,file:r.file,
     correct:r.correct_count,total:r.total_count,percent:r.percent,
     wrong:JSON.parse(r.wrong_json||'[]'),skills:JSON.parse(r.skills_json||'{}'),ts:r.ts
   }

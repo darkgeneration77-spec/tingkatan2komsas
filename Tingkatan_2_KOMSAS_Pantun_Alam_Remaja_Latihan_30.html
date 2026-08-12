@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pantun Alam Remaja - Latihan Peperiksaan 30 Soalan</title>
+<style>
+:root {
+  --bg:#f5f7fb; --card:#fff; --text:#172033; --muted:#667085; --p:#315ed8;
+  --soft:#eef3ff; --ok:#13795b; --bad:#b42318; --border:#dfe5ee;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text)}
+.hero{background:linear-gradient(135deg,#173a8f,#315ed8 55%,#7048d9);color:white;padding:42px 20px}
+.wrap{max-width:1000px;margin:auto}
+h1{margin:7px 0;font-size:clamp(2rem,5vw,3.2rem)} .sub{opacity:.9}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+.stat{background:#ffffff18;border:1px solid #ffffff33;border-radius:13px;padding:12px;text-align:center}
+.stat b{display:block;font-size:1.35rem}
+main{padding:24px 16px 60px}
+.card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:20px;margin:14px 0}
+.qnum{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:9px;background:var(--soft);color:var(--p);font-weight:900}
+.skill{display:inline-block;margin-left:7px;padding:4px 8px;border-radius:999px;background:#f0f2f6;font-weight:800;font-size:.76rem}
+.q{font-size:1.05rem;font-weight:800;margin:14px 0}
+.options{display:grid;gap:9px}
+.opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);padding:11px 12px;border-radius:12px;cursor:pointer;background:#fff}
+.opt:hover{border-color:#a7b8ee;background:#fafcff}
+.opt input{margin-top:4px}
+.result{display:none;margin-top:13px;padding:12px 14px;border-radius:12px}
+.correct{background:#edf9f5;border-left:4px solid var(--ok)}
+.wrong{background:#fff1f0;border-left:4px solid var(--bad)}
+.toolbar{position:sticky;bottom:0;background:#ffffffee;backdrop-filter:blur(10px);border-top:1px solid var(--border);padding:12px 16px;z-index:10}
+.buttons{max-width:1000px;margin:auto;display:flex;gap:10px;flex-wrap:wrap}
+button{border:0;border-radius:11px;padding:11px 15px;font-weight:850;cursor:pointer}
+.primary{background:var(--p);color:white} .secondary{background:#e9edf5;color:#24324b}
+.summary{display:none;background:#fff;border:1px solid var(--border);border-radius:18px;padding:22px;margin:20px 0}
+.bar{height:11px;border-radius:999px;background:#edf0f5;overflow:hidden} .fill{height:100%;background:var(--p);width:0}
+.skillrow{margin:10px 0}
+@media(max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header class="hero">
+<div class="wrap">
+<div style="font-weight:800;letter-spacing:.05em">TINGKATAN 2 BAHASA MELAYU · KOMSAS</div>
+<h1>Pantun Alam Remaja</h1>
+<div class="sub">Latihan Peperiksaan · 30 Soalan · 自动评分 + 错题分析</div>
+<div class="stats">
+  <div class="stat"><b id="done">0</b>Sudah Jawab</div>
+  <div class="stat"><b>30</b>Jumlah Soalan</div>
+  <div class="stat"><b id="score">-</b>Markah</div>
+  <div class="stat"><b id="percent">-</b>Peratus</div>
+</div>
+</div>
+</header>
+
+<main class="wrap">
+<div class="summary" id="summary">
+<h2>Analisis Prestasi 成绩分析</h2>
+<div id="summaryText"></div>
+<h3>Analisis Mengikut Kemahiran</h3>
+<div id="skills"></div>
+</div>
+<div id="quiz"></div>
+</main>
+
+<div class="toolbar">
+<div class="buttons">
+<button class="primary" onclick="submitQuiz()">Hantar & Semak / 批改</button>
+<button class="secondary" onclick="showWrong()">Tunjuk Soalan Salah / 错题</button>
+<button class="secondary" onclick="resetQuiz()">Ulang Semula / 重做</button>
+</div>
+</div>
+
+<script>
+const QUESTIONS = [{"type": "mcq", "skill": "Maksud", "q": "Apakah perasaan anak-anak apabila ibu pulang ke rumah?", "options": ["Takut", "Gembira", "Marah", "Kecewa"], "ans": 1, "exp": "Anak-anak berasa gembira apabila ibu pulang. 华语：孩子看到母亲回家时感到高兴。"}, {"type": "mcq", "skill": "Maksud", "q": "Perkataan “cemas” paling hampir maksudnya dengan...", "options": ["tenang", "riang", "risau", "berani"], "ans": 2, "exp": "Cemas bermaksud risau atau bimbang. 华语：cemas = 担心、焦虑。"}, {"type": "mcq", "skill": "Tema", "q": "Tema utama Pantun Alam Remaja ialah...", "options": ["Persahabatan di sekolah", "Kasih sayang antara anak-anak dengan ibu bapa", "Kehidupan di bandar", "Keberanian seorang remaja"], "ans": 1, "exp": "Tema perlu lengkap: kasih sayang antara anak-anak dengan ibu bapa dalam keluarga. 华语：孩子与父母之间的亲情。"}, {"type": "mcq", "skill": "Persoalan", "q": "Yang manakah merupakan persoalan dalam Pantun Alam Remaja?", "options": ["Kegembiraan anak-anak apabila ibu bapa pulang", "Persaingan antara jiran", "Kesedihan kerana gagal belajar", "Kehidupan nelayan"], "ans": 0, "exp": "Salah satu persoalan ialah kegembiraan anak-anak apabila ibu bapa pulang. 华语：父母回家时孩子感到开心。"}, {"type": "mcq", "skill": "Nilai", "q": "Nilai yang paling jelas ditunjukkan melalui hubungan anak-anak dengan ibu bapa ialah...", "options": ["Keberanian", "Kasih sayang", "Keadilan", "Kerajinan"], "ans": 1, "exp": "Nilai utama ialah kasih sayang. 华语：核心价值观是关爱。"}, {"type": "mcq", "skill": "Pengajaran", "q": "Ayat manakah sesuai sebagai pengajaran?", "options": ["Kasih sayang", "Kita hendaklah menyayangi ibu bapa dan ahli keluarga", "Keluarga yang harmoni", "Anak-anak berasa gembira"], "ans": 1, "exp": "Pengajaran mesti berbentuk ayat tindakan, biasanya bermula dengan “Kita hendaklah...”. 华语：Pengajaran 要写“我们应该怎样做”。"}, {"type": "mcq", "skill": "Nilai vs Pengajaran", "q": "“Kasih sayang” ialah...", "options": ["tema", "nilai", "pengajaran", "latar"], "ans": 1, "exp": "“Kasih sayang” ialah nilai, bukan pengajaran. 华语：只是价值观名称。"}, {"type": "mcq", "skill": "Nilai vs Pengajaran", "q": "“Kita hendaklah menghargai ibu bapa” ialah...", "options": ["nilai", "pengajaran", "tema", "gaya bahasa"], "ans": 1, "exp": "Ayat ini menyatakan tindakan yang patut dilakukan, jadi ini ialah pengajaran. 华语：这是启示。"}, {"type": "mcq", "skill": "Persoalan", "q": "Anak-anak menunggu ibu pulang menunjukkan persoalan...", "options": ["kerinduan anak terhadap ibu bapa", "kemarahan anak", "sikap malas", "persaingan keluarga"], "ans": 0, "exp": "Menunggu kepulangan ibu menunjukkan rasa rindu. 华语：表现孩子对父母的思念。"}, {"type": "mcq", "skill": "Persoalan", "q": "Ibu bapa tidak seharusnya terlalu cepat memarahi anak-anak. Hal ini berkaitan dengan...", "options": ["sikap bertimbang rasa", "sikap sombong", "sikap tamak", "sikap berani"], "ans": 0, "exp": "Ibu bapa perlu memahami kerenah anak-anak, iaitu bertimbang rasa. 华语：父母要体谅孩子。"}, {"type": "mcq", "skill": "Bentuk", "q": "Bahagian awal pantun yang berfungsi sebagai pembayang dikenali sebagai...", "options": ["tema", "maksud", "pembayang", "nilai"], "ans": 2, "exp": "Bahagian awal pantun disebut pembayang. 华语：pantun 前半部分叫 pembayang。"}, {"type": "mcq", "skill": "Bentuk", "q": "Bahagian yang membawa isi sebenar pantun disebut...", "options": ["pembayang", "maksud", "latar", "plot"], "ans": 1, "exp": "Bahagian isi sebenar disebut maksud. 华语：真正表达主要意思的部分叫 maksud。"}, {"type": "mcq", "skill": "Gaya Bahasa", "q": "Pengulangan bunyi vokal yang sama disebut...", "options": ["aliterasi", "asonansi", "inversi", "repetisi"], "ans": 1, "exp": "Asonansi = pengulangan bunyi vokal. 华语：重复元音。"}, {"type": "mcq", "skill": "Gaya Bahasa", "q": "Pengulangan bunyi konsonan yang sama disebut...", "options": ["asonansi", "aliterasi", "metafora", "simile"], "ans": 1, "exp": "Aliterasi = pengulangan bunyi konsonan. 华语：重复辅音。"}, {"type": "mcq", "skill": "Gaya Bahasa", "q": "Susunan kata yang diterbalikkan daripada susunan biasa disebut...", "options": ["inversi", "repetisi", "personifikasi", "hiperbola"], "ans": 0, "exp": "Inversi ialah susunan kata yang diterbalikkan. 华语：倒装。"}, {"type": "mcq", "skill": "Gaya Bahasa", "q": "Pengulangan perkataan atau frasa disebut...", "options": ["simile", "metafora", "repetisi", "sinkope"], "ans": 2, "exp": "Repetisi ialah pengulangan perkataan atau frasa. 华语：重复词语或短语。"}, {"type": "mcq", "skill": "Maksud", "q": "Kepulangan ibu dan bapa membawa...", "options": ["ketakutan", "kegembiraan", "kemarahan", "kebencian"], "ans": 1, "exp": "Kepulangan ibu bapa membawa kegembiraan kepada anak-anak. 华语：父母回家让孩子开心。"}, {"type": "mcq", "skill": "Nilai", "q": "Ibu bapa memahami kerenah anak-anak menunjukkan nilai...", "options": ["bertimbang rasa", "keberanian", "kerajinan", "kejujuran"], "ans": 0, "exp": "Memahami kerenah anak-anak menunjukkan nilai bertimbang rasa. 华语：体谅。"}, {"type": "mcq", "skill": "Nilai", "q": "Ibu bapa memberikan sesuatu kepada anak-anak boleh dikaitkan dengan nilai...", "options": ["baik hati", "tegas", "berani", "adil"], "ans": 0, "exp": "Perbuatan memberi boleh dikaitkan dengan nilai baik hati. 华语：善良。"}, {"type": "mcq", "skill": "Tema", "q": "Mengapakah jawapan “Kasih sayang” sahaja kurang lengkap sebagai tema?", "options": ["Kerana tema perlu ditulis dalam bahasa Inggeris", "Kerana tema perlu menyatakan pihak yang terlibat", "Kerana tema mesti berbentuk soalan", "Kerana tema mesti ada contoh gaya bahasa"], "ans": 1, "exp": "Tema yang baik menyatakan dengan jelas siapa yang terlibat, contohnya anak-anak dan ibu bapa. 华语：主题要说明是谁与谁之间的亲情。"}, {"type": "mcq", "skill": "KBAT", "q": "Apakah tindakan terbaik seorang anak untuk menunjukkan kasih sayang kepada ibu bapa?", "options": ["Mengabaikan nasihat", "Membantu dan menghormati mereka", "Meninggikan suara", "Menunggu ibu bapa meminta bantuan"], "ans": 1, "exp": "Membantu dan menghormati ibu bapa ialah tindakan yang munasabah untuk menunjukkan kasih sayang. 华语：帮助并尊重父母。"}, {"type": "mcq", "skill": "KBAT", "q": "Mengapakah hubungan keluarga yang harmoni penting?", "options": ["Supaya ahli keluarga saling memahami dan menyokong", "Supaya anak tidak perlu belajar", "Supaya semua orang sentiasa menang", "Supaya ibu bapa tidak perlu bekerja"], "ans": 0, "exp": "Keharmonian membolehkan ahli keluarga saling memahami dan menyokong. 华语：和谐家庭让成员互相理解和支持。"}, {"type": "mcq", "skill": "KBAT", "q": "Jika seorang anak berasa cemas apabila ibu lambat pulang, apakah tindakan paling wajar?", "options": ["Terus marah", "Hubungi ibu atau orang dewasa dengan tenang", "Keluar seorang diri mencarinya", "Abaikan sahaja"], "ans": 1, "exp": "Tindakan rasional ialah menghubungi ibu atau orang dewasa dengan tenang. 华语：冷静联系母亲或可信任的大人。"}, {"type": "mcq", "skill": "Pengajaran", "q": "Yang manakah BUKAN pengajaran yang sesuai?", "options": ["Kita hendaklah menyayangi ahli keluarga", "Kita hendaklah menghargai ibu bapa", "Kita hendaklah memahami kerenah anak-anak", "Kasih sayang"], "ans": 3, "exp": "“Kasih sayang” ialah nilai, bukan ayat pengajaran. 华语：它只是价值观名称。"}, {"type": "mcq", "skill": "Persoalan", "q": "“Keharmonian dalam sesebuah keluarga” merujuk kepada...", "options": ["tema sahaja", "persoalan yang boleh dibincangkan", "gaya bahasa", "latar tempat"], "ans": 1, "exp": "Keharmonian keluarga ialah salah satu persoalan. 华语：这是课题之一。"}, {"type": "mcq", "skill": "Bentuk", "q": "Untuk mengenal pasti rima akhir, pelajar perlu melihat...", "options": ["perkataan pertama setiap baris", "bunyi pada akhir setiap baris", "jumlah rangkap sahaja", "tema pantun"], "ans": 1, "exp": "Rima akhir ditentukan melalui bunyi pada hujung setiap baris. 华语：看每一行最后的音。"}, {"type": "mcq", "skill": "Gaya Bahasa", "q": "Dalam soalan gaya bahasa, jawapan yang lebih lengkap ialah...", "options": ["Nama gaya bahasa sahaja", "Bukti sahaja", "Nama gaya bahasa + bukti daripada teks", "Tema + nilai"], "ans": 2, "exp": "Jawapan yang lebih lengkap ialah nama gaya bahasa bersama bukti teks. 华语：修辞名称 + 文本证据。"}, {"type": "mcq", "skill": "KBAT", "q": "Apakah kesan jika ibu bapa selalu memahami perasaan anak-anak?", "options": ["Hubungan keluarga menjadi lebih rapat", "Anak menjadi musuh ibu bapa", "Keluarga menjadi semakin jauh", "Tiada perubahan langsung"], "ans": 0, "exp": "Saling memahami dapat mengeratkan hubungan keluarga. 华语：理解孩子能让家庭关系更亲密。"}, {"type": "mcq", "skill": "KBAT", "q": "Apakah cara paling baik untuk mewujudkan keluarga harmoni?", "options": ["Saling menghormati dan berkomunikasi", "Sering bertengkar", "Mengabaikan ahli keluarga", "Mementingkan diri sendiri"], "ans": 0, "exp": "Komunikasi dan saling menghormati membantu mewujudkan keluarga harmoni. 华语：沟通与互相尊重。"}, {"type": "mcq", "skill": "Keseluruhan", "q": "Apakah mesej paling penting Pantun Alam Remaja?", "options": ["Keluarga perlu hidup dengan kasih sayang, saling memahami dan menghargai", "Anak-anak mesti sentiasa mendapat hadiah", "Ibu bapa tidak perlu menegur anak", "Kegembiraan hanya datang daripada permainan"], "ans": 0, "exp": "Pantun menekankan kasih sayang, kerinduan, kegembiraan dan kefahaman dalam keluarga. 华语：核心是亲情、理解与珍惜家人。"}];
+const quiz = document.getElementById('quiz');
+
+function render(){
+  quiz.innerHTML = '';
+  QUESTIONS.forEach((x,i)=>{
+    const card=document.createElement('div'); card.className='card'; card.id='qcard'+i;
+    card.innerHTML=`<span class="qnum">${i+1}</span><span class="skill">${x.skill}</span>
+      <div class="q">${x.q}</div>
+      <div class="options">
+        ${x.options.map((o,j)=>`<label class="opt"><input type="radio" name="q${i}" value="${j}" onchange="countDone()"><span>${String.fromCharCode(65+j)}. ${o}</span></label>`).join('')}
+      </div>
+      <div class="result" id="res${i}"></div>`;
+    quiz.appendChild(card);
+  });
+}
+function countDone(){
+  let n=0; QUESTIONS.forEach((_,i)=>{if(document.querySelector(`input[name=q${i}]:checked`))n++;});
+  document.getElementById('done').textContent=n;
+}
+function submitQuiz(){
+  let score=0; const skills={};
+  QUESTIONS.forEach((x,i)=>{
+    if(!skills[x.skill]) skills[x.skill]={ok:0,total:0};
+    skills[x.skill].total++;
+    const sel=document.querySelector(`input[name=q${i}]:checked`);
+    const r=document.getElementById('res'+i); r.style.display='block';
+    if(sel && Number(sel.value)===x.ans){
+      score++; skills[x.skill].ok++; r.className='result correct';
+      r.innerHTML='<b>Betul / 正确</b><br>'+x.exp;
+    } else {
+      r.className='result wrong';
+      r.innerHTML=`<b>Salah / 错误</b><br>Jawapan: ${String.fromCharCode(65+x.ans)}. ${x.options[x.ans]}<br>${x.exp}`;
+    }
+  });
+  const pct=Math.round(score/QUESTIONS.length*100);
+  document.getElementById('score').textContent=score+'/30';
+  document.getElementById('percent').textContent=pct+'%';
+  document.getElementById('summary').style.display='block';
+  let level=pct>=85?'Cemerlang / 优秀':pct>=70?'Baik / 良好':pct>=50?'Perlu Kukuhkan / 需要加强':'Perlu Pemulihan / 需要补救';
+  document.getElementById('summaryText').innerHTML=`<p><b>${score} / 30 (${pct}%)</b> · ${level}</p>`;
+  let html='';
+  Object.entries(skills).forEach(([k,v])=>{
+    const p=Math.round(v.ok/v.total*100);
+    html+=`<div class="skillrow"><b>${k}</b> — ${v.ok}/${v.total} (${p}%)<div class="bar"><div class="fill" style="width:${p}%"></div></div></div>`;
+  });
+  document.getElementById('skills').innerHTML=html;
+  localStorage.setItem('komsas_pantun_alam_remaja_result', JSON.stringify({score,pct,skills,date:new Date().toISOString()}));
+  window.scrollTo({top:document.getElementById('summary').offsetTop-20,behavior:'smooth'});
+}
+function showWrong(){
+  let first=null;
+  QUESTIONS.forEach((x,i)=>{
+    const sel=document.querySelector(`input[name=q${i}]:checked`);
+    const card=document.getElementById('qcard'+i);
+    const wrong=!sel || Number(sel.value)!==x.ans;
+    card.style.display=wrong?'block':'none';
+    if(wrong && !first) first=card;
+  });
+  if(first) first.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function resetQuiz(){
+  localStorage.removeItem('komsas_pantun_alam_remaja_result');
+  render(); document.getElementById('done').textContent='0'; document.getElementById('score').textContent='-';
+  document.getElementById('percent').textContent='-'; document.getElementById('summary').style.display='none';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tingkatan 2 KOMSAS - Pantun Kiasan</title>
+<style>
+:root{
+  --bg:#f6f8fb; --card:#fff; --text:#172033; --muted:#667085;
+  --primary:#315ed8; --primary2:#6d4bd7; --soft:#eef3ff;
+  --green:#13795b; --greenbg:#eefaf6; --amber:#9a5b00; --amberbg:#fff7e6;
+  --border:#dde3ec; --shadow:0 14px 34px rgba(31,42,68,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  background:linear-gradient(180deg,#fbfcff,#f4f7fb); color:var(--text); line-height:1.7;
+}
+.hero{
+  background:linear-gradient(135deg,#173a8f,#315ed8 55%,#7048d9);
+  color:white; padding:52px 20px 34px;
+}
+.wrap{max-width:1100px;margin:auto}
+.kicker{font-weight:800;letter-spacing:.06em;font-size:.82rem;opacity:.92}
+h1{font-size:clamp(2.1rem,5vw,3.5rem);line-height:1.05;margin:10px 0 0}
+.nav{
+  position:sticky; top:0; z-index:10; background:rgba(255,255,255,.94);
+  backdrop-filter:blur(10px); border-bottom:1px solid var(--border)
+}
+.nav .wrap{display:flex;gap:8px;overflow:auto;padding:10px 14px}
+.nav a{
+  white-space:nowrap;text-decoration:none;color:#344054;font-weight:700;
+  padding:8px 11px;border-radius:10px;font-size:.9rem
+}
+.nav a:hover{background:var(--soft);color:var(--primary)}
+main{padding:26px 18px 60px}
+.card{
+  background:var(--card); border:1px solid var(--border); border-radius:20px;
+  padding:24px; box-shadow:var(--shadow); margin:24px 0
+}
+.section-title{display:flex;gap:12px;align-items:center;margin:0 0 18px;font-size:1.45rem}
+.num{
+  width:36px;height:36px;display:grid;place-items:center;border-radius:10px;
+  background:var(--soft);color:var(--primary);font-weight:900;flex:0 0 auto
+}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.box{
+  border:1px solid var(--border); border-radius:15px; padding:17px;
+  background:#fbfcff
+}
+.box h3{margin:0 0 7px;color:var(--primary);font-size:1rem}
+.bm{font-weight:750}
+.zh{color:var(--muted);margin-top:5px}
+.highlight{
+  border-left:5px solid var(--primary); background:var(--soft);
+  border-radius:12px; padding:16px 18px
+}
+.exam{
+  border-left:5px solid var(--green); background:var(--greenbg);
+  border-radius:12px; padding:16px 18px
+}
+.warn{
+  border-left:5px solid #e8a317; background:var(--amberbg);
+  border-radius:12px; padding:16px 18px
+}
+.item{
+  margin:9px 0; border:1px solid var(--border); border-radius:13px;
+  padding:13px 15px; background:#fff
+}
+.item strong{color:#2b3b68}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.badge{
+  display:inline-block;padding:3px 8px;border-radius:999px;background:#edf1f7;
+  color:#344054;font-weight:800;font-size:.78rem;margin:2px 4px 2px 0
+}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.compare>div{border-radius:15px;padding:17px;border:1px solid var(--border)}
+.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.check{
+  display:flex;gap:9px;padding:12px 14px;border:1px solid var(--border);
+  border-radius:12px;background:#fafcff
+}
+.tick{
+  width:24px;height:24px;border-radius:7px;background:#eaf8f2;color:var(--green);
+  display:grid;place-items:center;font-weight:900;flex:0 0 auto
+}
+.print{
+  position:fixed;right:18px;bottom:18px;border:0;background:#172033;color:white;
+  border-radius:13px;padding:12px 15px;font-weight:800;cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,.18)
+}
+footer{text-align:center;color:var(--muted);font-size:.88rem;margin-top:22px}
+@media(max-width:760px){.grid,.two,.compare,.checks{grid-template-columns:1fr}.card{padding:18px}}
+@media print{
+ .nav,.print{display:none}.hero{background:#fff;color:#111;border-bottom:2px solid #111;padding:18px 0}
+ body{background:white}.card{box-shadow:none;break-inside:avoid}main{padding:0}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">TINGKATAN 2 BAHASA MELAYU · KOMSAS</div>
+    <h1>Pantun Kiasan</h1>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="#maksud">Maksud</a>
+    <a href="#tema">Tema</a>
+    <a href="#persoalan">Persoalan</a>
+    <a href="#bentuk">Bentuk</a>
+    <a href="#bunyi">Unsur Bunyi</a>
+    <a href="#gaya">Gaya Bahasa</a>
+    <a href="#nilai">Nilai</a>
+    <a href="#pengajaran">Pengajaran</a>
+    <a href="#exam">Fokus Peperiksaan</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="maksud" class="card">
+  <h2 class="section-title"><span class="num">1</span>Maksud Setiap Rangkap 每节意思</h2>
+  <div class="grid">
+    <div class="box"><h3>Rangkap 1</h3><div class="bm">Perbuatan membazir merupakan amalan yang merugikan.</div><div class="zh">浪费是一种会给自己带来损失的行为。</div></div>
+    <div class="box"><h3>Rangkap 2</h3><div class="bm">Orang yang merantau hendaklah merendah diri apabila berada di tempat orang.</div><div class="zh">人在外地生活时应该保持谦虚，不可自高自大。</div></div>
+    <div class="box"><h3>Rangkap 3</h3><div class="bm">Sebelum menginginkan sesuatu yang sukar dicapai, kita perlu mengetahui kemampuan diri terlebih dahulu.</div><div class="zh">想追求难以实现的目标前，应先衡量自己的能力。</div></div>
+    <div class="box"><h3>Rangkap 4</h3><div class="bm">Jangan terlalu mengharapkan sesuatu yang belum pasti.</div><div class="zh">不要过度期待还没有确定的事情。</div></div>
+    <div class="box"><h3>Rangkap 5</h3><div class="bm">Sikap sombong terhadap kebolehan sendiri dan memandang rendah orang lain membawa keburukan.</div><div class="zh">过度自负并看不起别人，是一种不良态度。</div></div>
+    <div class="box"><h3>Rangkap 6</h3><div class="bm">Jangan membesar-besarkan kejayaan yang kecil.</div><div class="zh">不要因为一点小成就就到处炫耀。</div></div>
+    <div class="box"><h3>Rangkap 7</h3><div class="bm">Pendirian dan hati manusia boleh berubah-ubah.</div><div class="zh">人的立场和想法经常会发生改变。</div></div>
+    <div class="box"><h3>Rangkap 8</h3><div class="bm">Kesabaran dapat meredakan kemarahan.</div><div class="zh">耐心能够让愤怒慢慢平息。</div></div>
+    <div class="box"><h3>Rangkap 9</h3><div class="bm">Orang yang merantau akhirnya akan kembali ke tempat asal.</div><div class="zh">游子最终还是会回到自己的故乡。</div></div>
+    <div class="box"><h3>Rangkap 10</h3><div class="bm">Sesuatu perkara yang berlaku atau diperkatakan biasanya mempunyai sebab.</div><div class="zh">事情会发生或被人议论，通常都有一定的原因。</div></div>
+    <div class="box"><h3>Rangkap 11</h3><div class="bm">Jangan menginginkan sesuatu yang terlalu besar jika tidak mempunyai keupayaan.</div><div class="zh">没有足够能力时，不应盲目追求超出自身能力的目标。</div></div>
+    <div class="box"><h3>Rangkap 12</h3><div class="bm">Jika pengetahuan masih sedikit, jangan mencabar orang yang jauh lebih berpengetahuan.</div><div class="zh">知识不足时，不要逞强挑战比自己更有学识的人。</div></div>
+    <div class="box"><h3>Rangkap 13</h3><div class="bm">Jangan terlalu awal membuat persediaan untuk menikmati hasil yang belum diperoleh.</div><div class="zh">成果还没得到之前，不要太早庆祝或准备享受成果。</div></div>
+    <div class="box"><h3>Rangkap 14</h3><div class="bm">Sikap malas sejak muda sukar diubah apabila sudah tua; kesukaran juga lebih berat ketika keadaan susah.</div><div class="zh">年轻时已经懒惰，年老后更难改变；顺境都无法做好，逆境时只会更困难。</div></div>
+    <div class="box"><h3>Rangkap 15</h3><div class="bm">Menginginkan sesuatu yang di luar kemampuan hanya akan menjadi sia-sia.</div><div class="zh">追求完全超出自身能力的事情，往往只是徒劳。</div></div>
+    <div class="box"><h3>Rangkap 16</h3><div class="bm">Orang yang berdosa akan menyesal apabila sudah terlambat untuk bertaubat.</div><div class="zh">犯错后到了无法挽回的时候才后悔，已经太迟。</div></div>
+    <div class="box"><h3>Rangkap 17</h3><div class="bm">Rupa paras yang cantik tidak bernilai jika seseorang tidak berbudi bahasa.</div><div class="zh">外表再漂亮，如果没有良好品德和礼貌，也没有真正的价值。</div></div>
+  </div>
+</section>
+
+<section id="tema" class="card">
+  <h2 class="section-title"><span class="num">2</span>Tema 主题</h2>
+  <div class="highlight">
+    <strong>Sindiran terhadap segelintir anggota masyarakat yang mengamalkan sikap negatif sehingga boleh menjejaskan kehidupan diri sendiri dan orang lain.</strong>
+    <br><br>
+    对社会上一些不良行为作出讽刺与劝诫，因为这些负面态度最终会影响自己及他人的生活。
+  </div>
+</section>
+
+<section id="persoalan" class="card">
+  <h2 class="section-title"><span class="num">3</span>Persoalan 课题</h2>
+  <div class="item"><strong>Sikap membazir tidak digalakkan.</strong><br>不应养成浪费的习惯。</div>
+  <div class="item"><strong>Sikap rendah diri apabila berada di tempat orang.</strong><br>身处他乡时应保持谦虚。</div>
+  <div class="item"><strong>Mengharapkan sesuatu di luar kemampuan diri.</strong><br>不应盲目追求超出能力的事物。</div>
+  <div class="item"><strong>Mengharapkan sesuatu yang belum pasti.</strong><br>不要把希望完全寄托在尚未确定的事情上。</div>
+  <div class="item"><strong>Sifat sombong dan bangga diri membawa kemudaratan.</strong><br>骄傲自大会给自己带来不良后果。</div>
+  <div class="item"><strong>Kesabaran dapat melenyapkan kemarahan.</strong><br>耐心能够平息愤怒。</div>
+  <div class="item"><strong>Perantau akhirnya kembali ke kampung halaman.</strong><br>离乡的人最终仍会回到故乡。</div>
+  <div class="item"><strong>Sifat malas sejak kecil sukar diubah apabila dewasa.</strong><br>从小养成懒惰习惯，长大后更难改变。</div>
+  <div class="item"><strong>Kecantikan tidak bernilai tanpa budi bahasa.</strong><br>没有良好品德，再漂亮的外表也没有意义。</div>
+  <div class="item"><strong>Manusia perlu segera bertaubat setelah melakukan dosa.</strong><br>犯错后应及时醒悟和改正。</div>
+</section>
+
+<section id="bentuk" class="card">
+  <h2 class="section-title"><span class="num">4</span>Bentuk 形式</h2>
+  <div class="two">
+    <div class="item"><strong>17 rangkap</strong><br>全诗共有 17 个 rangkap。</div>
+    <div class="item"><strong>4 baris setiap rangkap</strong><br>每一节的行数相同，为四行。</div>
+    <div class="item"><strong>Pantun terikat</strong><br>结构受到传统 pantun 形式约束。</div>
+    <div class="item"><strong>Pembayang dan maksud</strong><br>前两行通常为 pembayang，后两行表达主要意思。</div>
+  </div>
+</section>
+
+<section id="bunyi" class="card">
+  <h2 class="section-title"><span class="num">5</span>Unsur Bunyi 音韵</h2>
+  <div class="item">
+    <strong>Asonansi</strong><br>
+    Pengulangan bunyi vokal yang sama dalam baris pantun.<br>
+    相同元音的重复。
+  </div>
+  <div class="item">
+    <strong>Aliterasi</strong><br>
+    Pengulangan bunyi konsonan yang sama dalam baris pantun.<br>
+    相同辅音的重复。
+  </div>
+  <div class="exam">
+    <strong>考试诀窍：</strong>看到 asonansi / aliterasi，不是背定义就完事。题目给诗句时，要实际找出重复的元音或辅音。
+  </div>
+</section>
+
+<section id="gaya" class="card">
+  <h2 class="section-title"><span class="num">6</span>Gaya Bahasa 修辞</h2>
+  <div class="grid">
+    <div class="box"><h3>Hiperbola 夸张</h3><div class="zh">用夸大的表达加强效果。</div></div>
+    <div class="box"><h3>Inversi 倒装</h3><div class="zh">把一般语序倒过来表达。</div></div>
+    <div class="box"><h3>Unsur alam 自然元素</h3><div class="zh">运用动物、植物、天气等自然意象。</div></div>
+    <div class="box"><h3>Peribahasa 谚语/惯用表达</h3><div class="zh">通过传统表达传达讽刺和劝诫。</div></div>
+    <div class="box"><h3>Personifikasi 拟人</h3><div class="zh">赋予非人物体或抽象概念人的动作与情感。</div></div>
+    <div class="box"><h3>Repetisi 重复</h3><div class="zh">重复某个字词，加强节奏或强调。</div></div>
+    <div class="box"><h3>Sinkope 缩略</h3><div class="zh">省略或缩短词语，例如口语化形式。</div></div>
+    <div class="box"><h3>Simile 明喻</h3><div class="zh">使用比较词来作直接比喻。</div></div>
+  </div>
+  <div class="warn" style="margin-top:16px">
+    <strong>答题格式：</strong> Nama gaya bahasa + bukti daripada teks。只写 “simile、inversi” 两个名字然后收工，属于把分数主动送回阅卷老师。
+  </div>
+</section>
+
+<section id="nilai" class="card">
+  <h2 class="section-title"><span class="num">7</span>Nilai 价值观</h2>
+  <div class="two">
+    <div class="item"><strong>Berjimat cermat 节俭</strong><br>避免浪费有用的东西。</div>
+    <div class="item"><strong>Kesabaran 耐心</strong><br>以耐心控制愤怒。</div>
+    <div class="item"><strong>Berbudi bahasa 有礼貌</strong><br>以良好品德与礼貌待人。</div>
+    <div class="item"><strong>Merendah diri 谦虚</strong><br>身处他乡仍保持低调和谦逊。</div>
+    <div class="item"><strong>Keinsafan 醒悟</strong><br>意识到错误并及时改正。</div>
+  </div>
+</section>
+
+<section id="pengajaran" class="card">
+  <h2 class="section-title"><span class="num">8</span>Pengajaran 启示</h2>
+  <div class="item"><strong>Kita mestilah mengelakkan diri daripada melakukan pembaziran.</strong><br>我们必须避免浪费。</div>
+  <div class="item"><strong>Kita hendaklah bersikap merendah diri apabila berada di tempat orang.</strong><br>身处他乡时应该保持谦虚。</div>
+  <div class="item"><strong>Kita mestilah bersabar untuk mengawal kemarahan.</strong><br>我们应该以耐心控制愤怒。</div>
+  <div class="item"><strong>Kita hendaklah berbudi bahasa supaya dihormati masyarakat.</strong><br>我们应该有礼貌、有品德，才能获得他人尊重。</div>
+  <div class="item"><strong>Kita haruslah insaf dan membetulkan kesilapan sebelum terlambat.</strong><br>我们应该及时醒悟并改正错误，不要等到无法挽回。</div>
+</section>
+
+<section id="exam" class="card">
+  <h2 class="section-title"><span class="num">9</span>Fokus Peperiksaan 考试必须会</h2>
+  <div class="checks">
+    <div class="check"><span class="tick">✓</span><div><strong>Maksud rangkap</strong><br>17 个 rangkap 的核心含义</div></div>
+    <div class="check"><span class="tick">✓</span><div><strong>Tema</strong><br>负面行为的讽刺与劝诫</div></div>
+    <div class="check"><span class="tick">✓</span><div><strong>Persoalan</strong><br>浪费、骄傲、懒惰、能力、礼貌等</div></div>
+    <div class="check"><span class="tick">✓</span><div><strong>Bentuk</strong><br>17 rangkap、每节 4 baris</div></div>
+    <div class="check"><span class="tick">✓</span><div><strong>Unsur bunyi</strong><br>asonansi / aliterasi</div></div>
+    <div class="check"><span class="tick">✓</span><div><strong>Gaya bahasa</strong><br>名称 + bukti</div></div>
+    <div class="check"><span class="tick">✓</span><div><strong>Nilai</strong><br>berjimat cermat、sabar、budi bahasa...</div></div>
+    <div class="check"><span class="tick">✓</span><div><strong>Pengajaran / KBAT</strong><br>用完整句子回答</div></div>
+  </div>
+  <div class="highlight" style="margin-top:18px">
+    <strong>Ringkasan cepat:</strong><br>
+    Pantun Kiasan = sindiran terhadap sikap negatif manusia.<br>
+    重点记：<span class="badge">membazir</span><span class="badge">sombong</span>
+    <span class="badge">malas</span><span class="badge">kemampuan diri</span>
+    <span class="badge">sabar</span><span class="badge">budi bahasa</span>
+  </div>
+</section>
+
+<footer>Tingkatan 2 Bahasa Melayu · KOMSAS · Pantun Kiasan</footer>
+</main>
+
+<button class="print" onclick="window.print()">Cetak / 打印</button>
+</body>
+</html>

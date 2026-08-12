@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tingkatan 2 KOMSAS - Sajak Roti</title>
+<style>
+:root{
+  --bg:#f6f8fb;--card:#fff;--text:#172033;--muted:#667085;
+  --primary:#315ed8;--soft:#eef3ff;--green:#13795b;--greenbg:#eefaf6;
+  --amber:#9a5b00;--amberbg:#fff7e6;--border:#dde3ec;
+  --shadow:0 14px 34px rgba(31,42,68,.08)
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+background:linear-gradient(180deg,#fbfcff,#f4f7fb);color:var(--text);line-height:1.7}
+.hero{background:linear-gradient(135deg,#173a8f,#315ed8 55%,#7048d9);color:#fff;padding:52px 20px 34px}
+.wrap{max-width:1100px;margin:auto}.kicker{font-weight:800;letter-spacing:.06em;font-size:.82rem;opacity:.92}
+h1{font-size:clamp(2.1rem,5vw,3.5rem);line-height:1.05;margin:10px 0 0}
+.nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.nav .wrap{display:flex;gap:8px;overflow:auto;padding:10px 14px}
+.nav a{white-space:nowrap;text-decoration:none;color:#344054;font-weight:700;padding:8px 11px;border-radius:10px;font-size:.9rem}
+.nav a:hover{background:var(--soft);color:var(--primary)}
+main{padding:26px 18px 60px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:24px;box-shadow:var(--shadow);margin:24px 0}
+.section-title{display:flex;gap:12px;align-items:center;margin:0 0 18px;font-size:1.45rem}
+.num{width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:var(--soft);color:var(--primary);font-weight:900;flex:0 0 auto}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.box{border:1px solid var(--border);border-radius:15px;padding:17px;background:#fbfcff}
+.box h3{margin:0 0 7px;color:var(--primary);font-size:1rem}.bm{font-weight:750}.zh{color:var(--muted);margin-top:5px}
+.highlight{border-left:5px solid var(--primary);background:var(--soft);border-radius:12px;padding:16px 18px}
+.exam{border-left:5px solid var(--green);background:var(--greenbg);border-radius:12px;padding:16px 18px}
+.warn{border-left:5px solid #e8a317;background:var(--amberbg);border-radius:12px;padding:16px 18px}
+.item{margin:9px 0;border:1px solid var(--border);border-radius:13px;padding:13px 15px;background:#fff}
+.item strong{color:#2b3b68}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.check{display:flex;gap:9px;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:#fafcff}
+.tick{width:24px;height:24px;border-radius:7px;background:#eaf8f2;color:var(--green);display:grid;place-items:center;font-weight:900;flex:0 0 auto}
+.badge{display:inline-block;padding:3px 8px;border-radius:999px;background:#edf1f7;color:#344054;font-weight:800;font-size:.78rem;margin:2px 4px 2px 0}
+.print{position:fixed;right:18px;bottom:18px;border:0;background:#172033;color:#fff;border-radius:13px;padding:12px 15px;font-weight:800;cursor:pointer;box-shadow:0 10px 25px rgba(0,0,0,.18)}
+footer{text-align:center;color:var(--muted);font-size:.88rem;margin-top:22px}
+@media(max-width:760px){.grid,.two,.checks{grid-template-columns:1fr}.card{padding:18px}}
+@media print{.nav,.print{display:none}.hero{background:#fff;color:#111;border-bottom:2px solid #111;padding:18px 0}body{background:#fff}.card{box-shadow:none;break-inside:avoid}main{padding:0}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">TINGKATAN 2 BAHASA MELAYU · KOMSAS</div>
+    <h1>Roti</h1>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="wrap">
+    <a href="#maksud">Maksud</a>
+    <a href="#tema">Tema</a>
+    <a href="#persoalan">Persoalan</a>
+    <a href="#bentuk">Bentuk</a>
+    <a href="#gaya">Gaya Bahasa</a>
+    <a href="#bunyi">Unsur Bunyi</a>
+    <a href="#nilai">Nilai</a>
+    <a href="#pengajaran">Pengajaran</a>
+    <a href="#exam">Fokus Peperiksaan</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+<section id="maksud" class="card">
+<h2 class="section-title"><span class="num">1</span>Maksud Setiap Rangkap 每节意思</h2>
+<div class="grid">
+  <div class="box">
+    <h3>Rangkap 1</h3>
+    <div class="bm">Roti yang dibuat di dapur membangkitkan selera kerana baunya yang harum.</div>
+    <div class="zh">厨房里制作的面包散发香味，让人产生食欲。</div>
+  </div>
+  <div class="box">
+    <h3>Rangkap 2</h3>
+    <div class="bm">Selera semakin bertambah apabila melihat roti dibakar dan roti yang rangup terhidang.</div>
+    <div class="zh">看到面包烘烤，再看到酥脆的面包摆在眼前，食欲更加强烈。</div>
+  </div>
+  <div class="box">
+    <h3>Rangkap 3</h3>
+    <div class="bm">Apabila roti terhidang, seseorang makan sehingga kenyang dan bersendawa.</div>
+    <div class="zh">面包端上桌后，人吃到饱足，甚至打嗝。</div>
+  </div>
+  <div class="box">
+    <h3>Rangkap 4</h3>
+    <div class="bm">Orang yang beriman dan berperikemanusiaan akan teringat akan golongan miskin setelah mereka kenyang serta memikirkan tanggungjawab untuk membantu golongan tersebut.</div>
+    <div class="zh">有信仰和同情心的人，在自己吃饱后会想到贫困者，并意识到自己有责任帮助他们。</div>
+  </div>
+  <div class="box">
+    <h3>Rangkap 5</h3>
+    <div class="bm">Jika ramai manusia beriman dan saling membantu, penderitaan dapat dikurangkan dan golongan yang dibantu akan bersyukur.</div>
+    <div class="zh">如果更多人有信仰并愿意帮助他人，社会上的苦难就会减少，受帮助的人也会心存感恩。</div>
+  </div>
+</div>
+</section>
+
+<section id="tema" class="card">
+<h2 class="section-title"><span class="num">2</span>Tema 主题</h2>
+<div class="highlight">
+  <strong>Orang yang beriman tidak melupakan golongan miskin ketika mereka berada dalam keadaan senang dan kenyang.</strong>
+  <br><br>
+  真正有信仰和同情心的人，在自己生活富足、吃饱之后，不会忘记贫困和不幸的人。
+</div>
+</section>
+
+<section id="persoalan" class="card">
+<h2 class="section-title"><span class="num">3</span>Persoalan 课题</h2>
+<div class="item"><strong>Bau roti yang harum membangkitkan selera.</strong><br>面包的香味会刺激食欲。</div>
+<div class="item"><strong>Manusia sukar menahan nafsu makan ketika lapar.</strong><br>人在饥饿时很难抵挡食物的诱惑。</div>
+<div class="item"><strong>Manusia menikmati makanan sehingga kenyang.</strong><br>人会享用美食直到饱足。</div>
+<div class="item"><strong>Orang yang beriman tidak melupakan golongan miskin ketika senang.</strong><br>有信仰的人在自己富足时不会忘记贫困者。</div>
+<div class="item"><strong>Bersyukur apabila menerima nikmat merupakan tanda keimanan.</strong><br>得到恩惠后懂得感恩，是信仰和良好品德的表现。</div>
+</section>
+
+<section id="bentuk" class="card">
+<h2 class="section-title"><span class="num">4</span>Bentuk 形式</h2>
+<div class="two">
+  <div class="item"><strong>5 rangkap</strong><br>全诗共有 5 个 rangkap。</div>
+  <div class="item"><strong>Rangkap 1 mempunyai 4 baris</strong><br>第一节有 4 行。</div>
+  <div class="item"><strong>Rangkap 2 hingga 5 mempunyai 5 baris</strong><br>第二至第五节各有 5 行。</div>
+  <div class="item"><strong>2 hingga 6 patah kata sebaris</strong><br>每行约有 2 至 6 个词。</div>
+  <div class="item"><strong>5 hingga 14 suku kata sebaris</strong><br>每行约有 5 至 14 个音节。</div>
+  <div class="item"><strong>Sajak berbentuk bebas</strong><br>属于自由诗，没有固定押韵格式。</div>
+</div>
+</section>
+
+<section id="gaya" class="card">
+<h2 class="section-title"><span class="num">5</span>Gaya Bahasa 修辞</h2>
+<div class="grid">
+  <div class="box"><h3>Personifikasi 拟人</h3><div class="zh">赋予非人物体人的动作或特性。</div></div>
+  <div class="box"><h3>Metafora 隐喻</h3><div class="zh">把不同事物直接组合，形成象征或深层意义。</div></div>
+  <div class="box"><h3>Hiperbola 夸张</h3><div class="zh">使用夸大的表达加强效果。</div></div>
+  <div class="box"><h3>Repetisi 重复</h3><div class="zh">重复字词来加强节奏与意思。</div></div>
+</div>
+<div class="exam" style="margin-top:16px">
+  <strong>Teknik menjawab:</strong> tulis nama gaya bahasa bersama bukti daripada teks。<br>
+  修辞名称要配诗句证据，不要只提交几个文学术语然后期待分数自己长出来。
+</div>
+</section>
+
+<section id="bunyi" class="card">
+<h2 class="section-title"><span class="num">6</span>Unsur Bunyi 音韵</h2>
+<div class="item"><strong>Asonansi</strong><br>Pengulangan bunyi vokal yang sama.<br>相同元音重复。</div>
+<div class="item"><strong>Aliterasi</strong><br>Pengulangan bunyi konsonan yang sama.<br>相同辅音重复。</div>
+<div class="warn"><strong>重点：</strong>Sajak Roti ialah sajak bebas，所以不要套 pantun 的 abab 或 syair 的 aaaa。</div>
+</section>
+
+<section id="nilai" class="card">
+<h2 class="section-title"><span class="num">7</span>Nilai 价值观</h2>
+<div class="two">
+  <div class="item"><strong>Kesabaran 耐心</strong><br>Sabar ketika menunggu sesuatu yang diingini.</div>
+  <div class="item"><strong>Baik hati 善良</strong><br>Memikirkan dan membantu orang yang kurang bernasib baik.</div>
+  <div class="item"><strong>Kesyukuran 感恩</strong><br>Bersyukur atas nikmat dan bantuan yang diterima.</div>
+  <div class="item"><strong>Keimanan 信仰</strong><br>Keimanan mendorong seseorang mengambil berat tentang orang lain.</div>
+  <div class="item"><strong>Kesederhanaan 适度</strong><br>Tidak terlalu menurut hawa nafsu ketika menikmati kesenangan.</div>
+</div>
+</section>
+
+<section id="pengajaran" class="card">
+<h2 class="section-title"><span class="num">8</span>Pengajaran 启示</h2>
+<div class="item"><strong>Kita hendaklah bersabar ketika menunggu untuk mendapatkan sesuatu.</strong><br>等待想要的东西时，我们应该有耐心。</div>
+<div class="item"><strong>Kita hendaklah memikirkan orang lain agar mereka turut mendapat rezeki.</strong><br>我们应该顾及他人，让有需要的人也能得到帮助。</div>
+<div class="item"><strong>Kita hendaklah mengingati golongan yang kurang bernasib baik.</strong><br>我们不应该忘记生活条件较差的人。</div>
+<div class="item"><strong>Kita hendaklah melatih diri menjadi insan yang beriman dan prihatin.</strong><br>我们应该培养信仰和关怀他人的品格。</div>
+<div class="item"><strong>Kita mestilah bersyukur atas nikmat kurniaan Tuhan.</strong><br>我们应该感谢自己所获得的恩惠。</div>
+</section>
+
+<section id="exam" class="card">
+<h2 class="section-title"><span class="num">9</span>Fokus Peperiksaan 考试必须会</h2>
+<div class="checks">
+  <div class="check"><span class="tick">✓</span><div><strong>Maksud rangkap</strong><br>5 rangkap：食欲 → 饱足 → 想到穷人 → 帮助</div></div>
+  <div class="check"><span class="tick">✓</span><div><strong>Tema</strong><br>orang beriman tidak melupakan golongan miskin</div></div>
+  <div class="check"><span class="tick">✓</span><div><strong>Persoalan</strong><br>makanan、nafsu、iman、kemiskinan、syukur</div></div>
+  <div class="check"><span class="tick">✓</span><div><strong>Bentuk</strong><br>5 rangkap、baris tidak sama、sajak bebas</div></div>
+  <div class="check"><span class="tick">✓</span><div><strong>Gaya Bahasa</strong><br>personifikasi、metafora、hiperbola、repetisi</div></div>
+  <div class="check"><span class="tick">✓</span><div><strong>Nilai</strong><br>kesabaran、baik hati、kesyukuran、keimanan</div></div>
+  <div class="check"><span class="tick">✓</span><div><strong>Pengajaran</strong><br>ingat dan bantu golongan kurang bernasib baik</div></div>
+  <div class="check"><span class="tick">✓</span><div><strong>KBAT</strong><br>如何帮助社会中的贫困群体</div></div>
+</div>
+
+<div class="highlight" style="margin-top:18px">
+<strong>Ringkasan cepat:</strong><br>
+Sajak Roti = <strong>ketika kita kenyang dan senang, jangan lupa orang yang lapar dan kurang bernasib baik.</strong><br>
+<span class="badge">roti</span><span class="badge">lapar</span><span class="badge">kenyang</span>
+<span class="badge">iman</span><span class="badge">miskin</span><span class="badge">syukur</span>
+</div>
+</section>
+
+<footer>Tingkatan 2 Bahasa Melayu · KOMSAS · Roti</footer>
+</main>
+<button class="print" onclick="window.print()">Cetak / 打印</button>
+</body>
+</html>
